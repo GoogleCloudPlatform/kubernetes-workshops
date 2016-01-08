@@ -11,7 +11,7 @@ Run an nginx container
 
 <!-- START Bash -->
 ```
-kubectl run nginx
+kubectl run gcr.io/google-samples/lobsters:latest
 ```
 <!-- END Bash -->
 
@@ -20,6 +20,7 @@ TODO: more stuff with pod
 ## Cleanup
 
 Delete your container
+
 <!-- START Bash -->
 ```
 kubectl delete nginx

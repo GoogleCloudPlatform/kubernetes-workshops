@@ -29,6 +29,12 @@ update to new versions of our app, quick rolling update
 
 ## Lab
 
-TODO: finish
+Start the Lobsters app using a pod declaration.
+
+```
+kubectl create -f ./pod.yaml
+```
+
+...
 
 ## Cleanup

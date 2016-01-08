@@ -15,7 +15,7 @@ Name | Level | Time Estimate
 [Core Kubernetes Concepts](core-concepts) | Beginner | 4 hours
 [Storing State](state) | Intermediate | 2 hours
 [Dockerize an App](dockerize) | Intermediate | 2 hours
-[Advanced Concepts](avanced) | Intermediate | 2 hours
+[Advanced Concepts](advanced) | Intermediate | 2 hours
 [Networking](networking) | Intermediate | 2 hours
 [Troubleshooting](troubleshooting) | Intermediate | 2 hours
 [Putting it all together](combine) | Advanced | 2 hours
