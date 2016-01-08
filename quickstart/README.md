@@ -7,7 +7,7 @@
 
 ## Lab
 
-Run an nginx container
+Run the Lobsters app container
 
 <!-- START Bash -->
 ```
@@ -23,6 +23,6 @@ Delete your container
 
 <!-- START Bash -->
 ```
-kubectl delete nginx
+kubectl delete lobsters
 ```
 <!-- END Bash -->
