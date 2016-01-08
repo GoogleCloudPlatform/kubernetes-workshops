@@ -6,6 +6,8 @@ directory is a module and contains a README.md that walks through the
 module and gopresents slides that accompany the module. If code,
 configuration, or scrips are needed, it is included and tested.
 
+This is not an official Google product.
+
 ## Table of Modules
 
 Name | Level | Time Estimate
