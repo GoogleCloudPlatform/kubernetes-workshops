@@ -11,7 +11,7 @@ This is not an official Google product.
 ## Table of Modules
 
 Name | Level | Time Estimate
--|-|-
+------------- | ------------- | ------------
 [Quickstart](quickstart) | Beginner | 1 hour
 [Cluster Bring Up](bring-up) | Beginner | 1 hour
 [Core Kubernetes Concepts](core-concepts) | Beginner | 4 hours
