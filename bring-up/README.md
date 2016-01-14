@@ -11,11 +11,11 @@ Download and extract binary release from https://github.com/kubernetes/kubernete
 
 Start the cluster
 
-<!-- START Bash -->
+<!-- dont-START bash -->
 ```
 cluster/kube-up.sh
 ```
-<!-- END Bash -->
+<!-- dont-END bash -->
 
 
 ## Cleanup
