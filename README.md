@@ -10,17 +10,19 @@ This is not an official Google product.
 
 ## Table of Modules
 
-Name | Level | Time Estimate
-------------- | ------------- | ------------
-[Quickstart](quickstart) | Beginner | 1 hour
-[Cluster Bring Up](bring-up) | Beginner | 1 hour
-[Core Kubernetes Concepts](core-concepts) | Beginner | 4 hours
-[Storing State](state) | Intermediate | 2 hours
-[Dockerize an App](dockerize) | Intermediate | 2 hours
-[Advanced Concepts](advanced) | Intermediate | 2 hours
-[Networking](networking) | Intermediate | 2 hours
-[Troubleshooting](troubleshooting) | Intermediate | 2 hours
-[Putting it all together](combine) | Advanced | 2 hours
+Name | Level | Time Estimate | Completion Status
+------------- | ------------- | ------------ | ------------
+[Quickstart](quickstart) | Beginner | 1 hour | In Progress
+[Cluster Bring Up](bring-up) | Beginner | 1 hour | Not Started
+[Core Kubernetes Concepts](core-concepts) | Beginner | 4 hours | Not Started
+[Storing State](state) | Intermediate | 2 hours | Not Started
+[Dockerize an App](dockerize) | Intermediate | 2 hours | Not Started
+[Advanced Concepts](advanced) | Intermediate | 2 hours | Not Started
+[Networking](networking) | Intermediate | 2 hours | Not Started
+[Troubleshooting](troubleshooting) | Intermediate | 2 hours | Not Started
+[Putting it all together](combine) | Advanced | 2 hours | Not Started
+
+Status: Not Started --> In Progress --> Draft --> Ready
 
 ## Contributing changes
 
