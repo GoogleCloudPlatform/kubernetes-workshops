@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/GoogleCloudPlatform/kubernetes-workshops.svg?branch=master)](https://travis-ci.org/GoogleCloudPlatform/kubernetes-workshops)
+
 # Kubernetes Workshops
 
 This repository contains various modules that can be combined to
