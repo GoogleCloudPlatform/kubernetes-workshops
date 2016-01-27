@@ -9,11 +9,22 @@
 
 Run the Lobsters app container
 
-<!-- START Bash -->
+<!-- dont-START bash -->
 ```
-kubectl run gcr.io/google-samples/lobsters:latest
+kubectl run lobsters --image=gcr.io/google-samples/lobsters:latest
 ```
-<!-- END Bash -->
+<!-- dont-END bash -->
+
+<!-- Test this in the meantime START bash
+kubectl run nginx --image=nginx
+  END bash -->
+
+Look at the pods
+<!-- START bash -->
+```
+kubectl get pods
+```
+<!-- END bash -->
 
 TODO: more stuff with pod
 
@@ -21,8 +32,11 @@ TODO: more stuff with pod
 
 Delete your container
 
-<!-- START Bash -->
+<!-- dont-START bash -->
 ```
-kubectl delete lobsters
+kubectl delete rc lobsters
 ```
-<!-- END Bash -->
+<!-- dont-END bash -->
+<!-- Test this in the meantime START bash
+kubectl delete rc nginx
+  END bash -->
