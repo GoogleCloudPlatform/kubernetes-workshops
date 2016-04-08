@@ -13,15 +13,15 @@
 # limitations under the License.
 
 apiVersion: v1
-kind: Pod
+kind: Service
 metadata:
   name: lobsters
   labels:
     app: lobsters
 spec:
-  containers:
-  - image: gcr.io/google-samples/lobsters:1.0
-    name: lobsters
-    ports:
-    - containerPort: 3000
-      name: web
+  ports:
+    - port: 80
+      targetPort: web
+  selector:
+    app: lobsters
+  type: LoadBalancer

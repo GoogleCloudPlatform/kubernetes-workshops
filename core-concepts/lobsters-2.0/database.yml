@@ -12,16 +12,20 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-apiVersion: v1
-kind: Pod
-metadata:
-  name: lobsters
-  labels:
-    app: lobsters
-spec:
-  containers:
-  - image: gcr.io/google-samples/lobsters:1.0
-    name: lobsters
-    ports:
-    - containerPort: 3000
-      name: web
+development:
+  adapter: sqlite3
+  database: db/development.sqlite3
+  pool: 5
+  timeout: 5000
+
+test:
+  adapter: sqlite3
+  database: db/test.sqlite3
+  pool: 5
+  timeout: 5000
+
+production:
+  adapter: sqlite3
+  database: db/production.sqlite3
+  pool: 5
+  timeout: 5000
