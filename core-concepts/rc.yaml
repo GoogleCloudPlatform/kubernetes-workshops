@@ -13,15 +13,20 @@
 # limitations under the License.
 
 apiVersion: v1
-kind: Pod
+kind: ReplicationController
 metadata:
   name: lobsters
   labels:
     app: lobsters
 spec:
-  containers:
-  - image: gcr.io/google-samples/lobsters:1.0
-    name: lobsters
-    ports:
-    - containerPort: 3000
-      name: web
+  template:
+    metadata:
+      labels:
+        app: lobsters
+    spec:
+      containers:
+        - image: gcr.io/google-samples/lobsters:1.0
+          name: lobsters
+          ports:
+            - containerPort: 3000
+              name: web

@@ -12,16 +12,14 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-apiVersion: v1
-kind: Pod
-metadata:
-  name: lobsters
-  labels:
-    app: lobsters
-spec:
-  containers:
-  - image: gcr.io/google-samples/lobsters:1.0
-    name: lobsters
-    ports:
-    - containerPort: 3000
-      name: web
+class << Rails.application
+  def domain
+    "lobsters-example"
+  end
+
+  def name
+    "Example Lobsters 2.0!"
+  end
+end
+
+Rails.application.routes.default_url_options[:host] = Rails.application.domain
