@@ -14,9 +14,9 @@ This is not an official Google product.
 
 Name | Level | Time Estimate | Completion Status
 ------------- | ------------- | ------------ | ------------
-[Quickstart](quickstart) | Beginner | 1 hour | In Progress
-[Cluster Bring Up](bring-up) | Beginner | 1 hour | Not Started
-[Core Kubernetes Concepts](core-concepts) | Beginner | 4 hours | Not Started
+[Quickstart](quickstart) | Beginner | 1 hour | Draft
+[Cluster Bring Up](bring-up) | Beginner | 1 hour | In Progress (Jeff)
+[Core Kubernetes Concepts](core-concepts) | Beginner | 4 hours | Draft
 [Storing State](state) | Intermediate | 2 hours | Not Started
 [Dockerize an App](dockerize) | Intermediate | 2 hours | Not Started
 [Advanced Concepts](advanced) | Intermediate | 2 hours | Not Started
