@@ -9,7 +9,7 @@ recommended.
 # Start Kubernetes
 
 ```
-export K8S_VERSION=v1.2.2
+export K8S_VERSION=v1.2.3
 ```
 
 ```
@@ -70,4 +70,13 @@ kubectl get nodes
 ```
 NAME        STATUS    AGE
 127.0.0.1   Ready     2s
+```
+# Start DNS
+
+```
+kubectl create -f ./skydns.yaml
+```
+```
+replicationcontroller "kube-dns-v11" created
+service "kube-dns" created
 ```

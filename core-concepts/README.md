@@ -125,6 +125,7 @@ Start lobsters using an RC, use the same service definition:
 <!-- START bash
 sleep 300
 END bash -->
+
 <!-- START bash -->
 ```
 kubectl create -f ./rc.yaml,./service.yaml
@@ -263,6 +264,7 @@ RC declaration.
 <!-- START bash
 sleep 300
 END bash -->
+
 <!-- START bash -->
 ```
 kubectl create -f ./dep.yaml,./service.yaml
