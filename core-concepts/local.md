@@ -1,9 +1,5 @@
 # Core Concepts
 
-## Local Docker
-
-This document is for cloud, for local docker see [local.md](local.md).
-
 ## Prerequisites
 
 * Have a cluster running and a `kubectl` binary configured to talk to
@@ -11,17 +7,24 @@ This document is for cloud, for local docker see [local.md](local.md).
 
 ## Lab
 
+### Mac / Windows
+
+You'll need to know the IP of the `docker-machine` vm that is your docker host:
+
+```
+docker-machine ip $(docker-machine active)
+```
+
+Use this when browsing to a node IP in place of `localhost` below.
 
 ### Pods
 
 First define a single pod, see [pod.yaml](pod.yaml). Start the
 Lobsters app from this pod declaration.
 
-<!-- START bash -->
 ```
 kubectl create -f ./pod.yaml
 ```
-<!-- END bash -->
 
 ```
 pod "lobsters" created
@@ -40,11 +43,9 @@ lobsters   1/1       Running   0          1m
 
 Delete the pod
 
-<!-- START bash -->
 ```
 kubectl delete pod lobsters
 ```
-<!-- END bash -->
 
 ```
 pod "lobsters" deleted
@@ -55,53 +56,42 @@ The pod is gone forever
 ### Service
 
 To access Lobsters from outside the cluster, we'll need a service. The
-service defined in [service.yaml](service.yaml) will route traffic to
-any pod with the label `app: lobsters`, which matches our pod
-definition. The service is for port 80, but routes to the port labeled
-`web` in our pod definition. The `type: LoadBalancer` creates an IP
-external to the cluster in supported environments.
+service defined in [service-local.yaml](service-local.yaml) will route
+traffic to any pod with the label `app: lobsters`, which matches our
+pod definition. The service routs to the port labeled `web` in our pod
+definition. The `type: NodePort` line allows traffic on a particular
+port of each node to be routed to the service.
 
 Create the service and pod:
 
-<!-- START bash
-sleep 300
-END bash -->
-
-<!-- START bash -->
 ```
-kubectl create -f ./service.yaml,./pod.yaml
+kubectl create -f ./service-local.yaml,./pod.yaml
 ```
-<!-- END bash -->
 
 ```
 service "lobsters" created
 pod "lobsters" created
 ```
 
-Wait for the external IP:
-
-<!-- START bash -->
-```
-kubectl get svc lobsters
-```
-<!-- END bash -->
+Check the service's node port, yours will be different:
 
 ```
-NAME       CLUSTER-IP     EXTERNAL-IP    PORT(S)   AGE
-lobsters   10.3.253.158   1.2.3.4        80/TCP    1m
+kubectl get svc lobsters -o yaml | grep nodePort
 ```
 
-Check that it is working by visiting the external IP in your browser.
+```
+  - nodePort: 31618
+```
 
+Check that it is working by visiting the node IP with the port you
+found `http://localhost:31618/`
 
 
 Delete
 
-<!-- START bash -->
 ```
 kubectl delete pod,svc -l app=lobsters
 ```
-<!-- END bash -->
 
 ```
 pod "lobsters" deleted
@@ -122,34 +112,27 @@ the pod definition, but wrapped in an RC.
 
 Start lobsters using an RC, use the same service definition:
 
-<!-- START bash
-sleep 300
-END bash -->
-<!-- START bash -->
 ```
-kubectl create -f ./rc.yaml,./service.yaml
+kubectl create -f ./rc.yaml,./service-local.yaml
 ```
-<!-- END bash -->
 
 ```
 replicationcontroller "lobsters" created
 service "lobsters" created
 ```
 
-Wait for the external IP:
-
-<!-- START bash -->
-```
-kubectl get svc lobsters
-```
-<!-- END bash -->
+Check the service's node port, yours will be different:
 
 ```
-NAME       CLUSTER-IP     EXTERNAL-IP    PORT(S)   AGE
-lobsters   10.3.253.158   1.2.3.4        80/TCP    1m
+kubectl get svc lobsters -o yaml | grep nodePort
 ```
 
-Check that it is working by visiting the external IP in your browser.
+```
+  - nodePort: 31618
+```
+
+Check that it is working by visiting the node IP with the port you
+found `http://localhost:31618/`
 
 
 Now, look at the pod
@@ -159,8 +142,8 @@ kubectl get pods -o wide
 ```
 
 ```
-NAME             READY     STATUS    RESTARTS   AGE       NODE
-lobsters-jf0xs   1/1       Running   0          2m        gke-myclus-2f1fdf58-node-lfaa
+NAME                   READY     STATUS    RESTARTS   AGE       NODE
+lobsters-tx1sa         1/1       Running   0          21s       127.0.0.1
 ```
 
 This pod was created by the replication controller. Try deleting the
@@ -181,19 +164,17 @@ kubectl get pods -o wide
 ```
 
 ```
-NAME             READY     STATUS    RESTARTS   AGE       NODE
-lobsters-t1vwk   1/1       Running   0          6s        gke-myclus-2f1fdf58-node-lfaa
+NAME                   READY     STATUS    RESTARTS   AGE       NODE
+lobsters-l5fq3         1/1       Running   0          1s        127.0.0.1
 ```
 
-A new pod was created! It might even be on a different node.
+A new pod was created!
 
 Scaling is as easy as:
 
-<!-- START bash -->
 ```
 kubectl scale --replicas=5 rc lobsters
 ```
-<!-- END bash -->
 
 ```
 replicationcontroller "lobsters" scaled
@@ -206,21 +187,19 @@ kubectl get pods -o wide
 ```
 
 ```
-NAME             READY     STATUS              RESTARTS   AGE       NODE
-lobsters-32ona   1/1       Running             0          26s       gke-myclus-2f1fdf58-node-lfaa
-lobsters-8twm0   1/1       Running             0          2m        gke-myclus-2f1fdf58-node-lfaa
-lobsters-hhves   0/1       ContainerCreating   0          26s       gke-myclus-2f1fdf58-node-kxe4
-lobsters-lv5km   0/1       ContainerCreating   0          26s       gke-myclus-2f1fdf58-node-bvxp
-lobsters-tlojp   0/1       ContainerCreating   0          26s       gke-myclus-2f1fdf58-node-bvxp
+NAME                   READY     STATUS    RESTARTS   AGE       NODE
+lobsters-9ijsi         1/1       Running   0          6s        127.0.0.1
+lobsters-l5fq3         1/1       Running   0          36s       127.0.0.1
+lobsters-pfnlj         1/1       Running   0          6s        127.0.0.1
+lobsters-sceuy         1/1       Running   0          6s        127.0.0.1
+lobsters-txgwb         1/1       Running   0          6s        127.0.0.1
 ```
 
 Also the RC
 
-<!-- START bash -->
 ```
 kubectl get rc lobsters -o wide
 ```
-<!-- END bash -->
 
 ```
 NAME       DESIRED   CURRENT   AGE       CONTAINER(S)   IMAGE(S)                             SELECTOR
@@ -237,11 +216,9 @@ site, refresh and hit a different replica! The module
 
 Delete
 
-<!-- START bash -->
 ```
 kubectl delete rc,svc -l app=lobsters
 ```
-<!-- END bash -->
 
 ```
 replicationcontroller "lobsters" deleted
@@ -260,14 +237,9 @@ Start up Lobsters using the Deployment declaration in
 [dep.yaml](dep.yaml). You'll notice that it is almost identical to an
 RC declaration.
 
-<!-- START bash
-sleep 300
-END bash -->
-<!-- START bash -->
 ```
-kubectl create -f ./dep.yaml,./service.yaml
+kubectl create -f ./dep.yaml,./service-local.yaml
 ```
-<!-- END bash -->
 
 ```
 deployment "lobsters" created
@@ -296,11 +268,9 @@ the replicas on the new RS, while decreasing the number of replicas on
 the old RS, this will result in a smooth transition from version 1.0
 to 2.0 while keeping around 5 total replicas running at all times.
 
-<!-- START bash -->
 ```
 kubectl apply -f ./dep-2.yaml
 ```
-<!-- END bash -->
 
 ```
 deployment "lobsters" configured
@@ -327,8 +297,6 @@ use `kubectl apply` to switch between the two version and observe.
 
 Deletes everything created in this Lab
 
-<!-- START bash -->
 ```
 kubectl delete pod,rc,svc,deployment -l app=lobsters
 ```
-<!-- END bash -->
