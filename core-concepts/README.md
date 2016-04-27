@@ -63,6 +63,10 @@ external to the cluster in supported environments.
 
 Create the service and pod:
 
+<!-- START bash
+sleep 1
+END bash -->
+
 <!-- START bash -->
 ```
 kubectl create -f ./service.yaml,./pod.yaml
@@ -118,6 +122,9 @@ the pod definition, but wrapped in an RC.
 
 Start lobsters using an RC, use the same service definition:
 
+<!-- START bash
+sleep 1
+END bash -->
 <!-- START bash -->
 ```
 kubectl create -f ./rc.yaml,./service.yaml
@@ -253,6 +260,9 @@ Start up Lobsters using the Deployment declaration in
 [dep.yaml](dep.yaml). You'll notice that it is almost identical to an
 RC declaration.
 
+<!-- START bash
+sleep 1
+END bash -->
 <!-- START bash -->
 ```
 kubectl create -f ./dep.yaml,./service.yaml
