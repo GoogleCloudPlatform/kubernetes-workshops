@@ -55,6 +55,13 @@ chmod 755 kubectl
 PATH=$PATH:$(pwd)
 ```
 
+Windows (with bash)
+```
+wget http://storage.googleapis.com/kubernetes-release/release/${K8S_VERSION}/bin/windows/amd64/kubectl.exe
+chmod 755 kubectl
+PATH=$PATH:$(pwd)
+```
+
 # Check that your cluster is running
 
 ```

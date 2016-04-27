@@ -1,9 +1,5 @@
 # Core Concepts
 
-## Local Docker
-
-This document is for cloud, for local docker see [local.md](local.md).
-
 ## Prerequisites
 
 * Have a cluster running and a `kubectl` binary configured to talk to
@@ -11,6 +7,15 @@ This document is for cloud, for local docker see [local.md](local.md).
 
 ## Lab
 
+### Mac / Windows
+
+You'll need to know the IP of the `docker-machine` vm that is your docker host:
+
+```
+docker-machine ip $(docker-machine active)
+```
+
+Use this when browsing to a node IP in place of `localhost` below.
 
 ### Pods
 
@@ -51,16 +56,16 @@ The pod is gone forever
 ### Service
 
 To access Lobsters from outside the cluster, we'll need a service. The
-service defined in [service.yaml](service.yaml) will route traffic to
-any pod with the label `app: lobsters`, which matches our pod
-definition. The service is for port 80, but routes to the port labeled
-`web` in our pod definition. The `type: LoadBalancer` creates an IP
-external to the cluster in supported environments.
+service defined in [service-local.yaml](service-local.yaml) will route
+traffic to any pod with the label `app: lobsters`, which matches our
+pod definition. The service routs to the port labeled `web` in our pod
+definition. The `type: NodePort` line allows traffic on a particular
+port of each node to be routed to the service.
 
 Create the service and pod:
 
 ```
-kubectl create -f ./service.yaml,./pod.yaml
+kubectl create -f ./service-local.yaml,./pod.yaml
 ```
 
 ```
@@ -68,19 +73,18 @@ service "lobsters" created
 pod "lobsters" created
 ```
 
-Wait for the external IP:
+Check the service's node port, yours will be different:
 
 ```
-kubectl get svc lobsters
+kubectl get svc lobsters -o yaml | grep nodePort
 ```
 
 ```
-NAME       CLUSTER-IP     EXTERNAL-IP    PORT(S)   AGE
-lobsters   10.3.253.158   1.2.3.4        80/TCP    1m
+  - nodePort: 31618
 ```
 
-Check that it is working by visiting the external IP in your browser.
-
+Check that it is working by visiting the node IP with the port you
+found `http://localhost:31618/`
 
 
 Delete
@@ -109,7 +113,7 @@ the pod definition, but wrapped in an RC.
 Start lobsters using an RC, use the same service definition:
 
 ```
-kubectl create -f ./rc.yaml,./service.yaml
+kubectl create -f ./rc.yaml,./service-local.yaml
 ```
 
 ```
@@ -117,18 +121,18 @@ replicationcontroller "lobsters" created
 service "lobsters" created
 ```
 
-Wait for the external IP:
+Check the service's node port, yours will be different:
 
 ```
-kubectl get svc lobsters
+kubectl get svc lobsters -o yaml | grep nodePort
 ```
 
 ```
-NAME       CLUSTER-IP     EXTERNAL-IP    PORT(S)   AGE
-lobsters   10.3.253.158   1.2.3.4        80/TCP    1m
+  - nodePort: 31618
 ```
 
-Check that it is working by visiting the external IP in your browser.
+Check that it is working by visiting the node IP with the port you
+found `http://localhost:31618/`
 
 
 Now, look at the pod
@@ -138,8 +142,8 @@ kubectl get pods -o wide
 ```
 
 ```
-NAME             READY     STATUS    RESTARTS   AGE       NODE
-lobsters-jf0xs   1/1       Running   0          2m        gke-myclus-2f1fdf58-node-lfaa
+NAME                   READY     STATUS    RESTARTS   AGE       NODE
+lobsters-tx1sa         1/1       Running   0          21s       127.0.0.1
 ```
 
 This pod was created by the replication controller. Try deleting the
@@ -160,11 +164,11 @@ kubectl get pods -o wide
 ```
 
 ```
-NAME             READY     STATUS    RESTARTS   AGE       NODE
-lobsters-t1vwk   1/1       Running   0          6s        gke-myclus-2f1fdf58-node-lfaa
+NAME                   READY     STATUS    RESTARTS   AGE       NODE
+lobsters-l5fq3         1/1       Running   0          1s        127.0.0.1
 ```
 
-A new pod was created! It might even be on a different node.
+A new pod was created!
 
 Scaling is as easy as:
 
@@ -183,12 +187,12 @@ kubectl get pods -o wide
 ```
 
 ```
-NAME             READY     STATUS              RESTARTS   AGE       NODE
-lobsters-32ona   1/1       Running             0          26s       gke-myclus-2f1fdf58-node-lfaa
-lobsters-8twm0   1/1       Running             0          2m        gke-myclus-2f1fdf58-node-lfaa
-lobsters-hhves   0/1       ContainerCreating   0          26s       gke-myclus-2f1fdf58-node-kxe4
-lobsters-lv5km   0/1       ContainerCreating   0          26s       gke-myclus-2f1fdf58-node-bvxp
-lobsters-tlojp   0/1       ContainerCreating   0          26s       gke-myclus-2f1fdf58-node-bvxp
+NAME                   READY     STATUS    RESTARTS   AGE       NODE
+lobsters-9ijsi         1/1       Running   0          6s        127.0.0.1
+lobsters-l5fq3         1/1       Running   0          36s       127.0.0.1
+lobsters-pfnlj         1/1       Running   0          6s        127.0.0.1
+lobsters-sceuy         1/1       Running   0          6s        127.0.0.1
+lobsters-txgwb         1/1       Running   0          6s        127.0.0.1
 ```
 
 Also the RC
@@ -234,7 +238,7 @@ Start up Lobsters using the Deployment declaration in
 RC declaration.
 
 ```
-kubectl create -f ./dep.yaml,./service.yaml
+kubectl create -f ./dep.yaml,./service-local.yaml
 ```
 
 ```
@@ -296,4 +300,3 @@ Deletes everything created in this Lab
 ```
 kubectl delete pod,rc,svc,deployment -l app=lobsters
 ```
-
