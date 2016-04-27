@@ -17,9 +17,11 @@ This document is for cloud, for local docker see [local.md](local.md).
 First define a single pod, see [pod.yaml](pod.yaml). Start the
 Lobsters app from this pod declaration.
 
+<!-- START bash -->
 ```
 kubectl create -f ./pod.yaml
 ```
+<!-- END bash -->
 
 ```
 pod "lobsters" created
@@ -38,9 +40,11 @@ lobsters   1/1       Running   0          1m
 
 Delete the pod
 
+<!-- START bash -->
 ```
 kubectl delete pod lobsters
 ```
+<!-- END bash -->
 
 ```
 pod "lobsters" deleted
@@ -59,9 +63,11 @@ external to the cluster in supported environments.
 
 Create the service and pod:
 
+<!-- START bash -->
 ```
 kubectl create -f ./service.yaml,./pod.yaml
 ```
+<!-- END bash -->
 
 ```
 service "lobsters" created
@@ -70,9 +76,11 @@ pod "lobsters" created
 
 Wait for the external IP:
 
+<!-- START bash -->
 ```
 kubectl get svc lobsters
 ```
+<!-- END bash -->
 
 ```
 NAME       CLUSTER-IP     EXTERNAL-IP    PORT(S)   AGE
@@ -85,9 +93,11 @@ Check that it is working by visiting the external IP in your browser.
 
 Delete
 
+<!-- START bash -->
 ```
 kubectl delete pod,svc -l app=lobsters
 ```
+<!-- END bash -->
 
 ```
 pod "lobsters" deleted
@@ -108,9 +118,11 @@ the pod definition, but wrapped in an RC.
 
 Start lobsters using an RC, use the same service definition:
 
+<!-- START bash -->
 ```
 kubectl create -f ./rc.yaml,./service.yaml
 ```
+<!-- END bash -->
 
 ```
 replicationcontroller "lobsters" created
@@ -119,9 +131,11 @@ service "lobsters" created
 
 Wait for the external IP:
 
+<!-- START bash -->
 ```
 kubectl get svc lobsters
 ```
+<!-- END bash -->
 
 ```
 NAME       CLUSTER-IP     EXTERNAL-IP    PORT(S)   AGE
@@ -168,9 +182,11 @@ A new pod was created! It might even be on a different node.
 
 Scaling is as easy as:
 
+<!-- START bash -->
 ```
 kubectl scale --replicas=5 rc lobsters
 ```
+<!-- END bash -->
 
 ```
 replicationcontroller "lobsters" scaled
@@ -193,9 +209,11 @@ lobsters-tlojp   0/1       ContainerCreating   0          26s       gke-myclus-2
 
 Also the RC
 
+<!-- START bash -->
 ```
 kubectl get rc lobsters -o wide
 ```
+<!-- END bash -->
 
 ```
 NAME       DESIRED   CURRENT   AGE       CONTAINER(S)   IMAGE(S)                             SELECTOR
@@ -212,9 +230,11 @@ site, refresh and hit a different replica! The module
 
 Delete
 
+<!-- START bash -->
 ```
 kubectl delete rc,svc -l app=lobsters
 ```
+<!-- END bash -->
 
 ```
 replicationcontroller "lobsters" deleted
@@ -233,9 +253,11 @@ Start up Lobsters using the Deployment declaration in
 [dep.yaml](dep.yaml). You'll notice that it is almost identical to an
 RC declaration.
 
+<!-- START bash -->
 ```
 kubectl create -f ./dep.yaml,./service.yaml
 ```
+<!-- END bash -->
 
 ```
 deployment "lobsters" created
@@ -264,9 +286,11 @@ the replicas on the new RS, while decreasing the number of replicas on
 the old RS, this will result in a smooth transition from version 1.0
 to 2.0 while keeping around 5 total replicas running at all times.
 
+<!-- START bash -->
 ```
 kubectl apply -f ./dep-2.yaml
 ```
+<!-- END bash -->
 
 ```
 deployment "lobsters" configured
@@ -293,7 +317,8 @@ use `kubectl apply` to switch between the two version and observe.
 
 Deletes everything created in this Lab
 
+<!-- START bash -->
 ```
 kubectl delete pod,rc,svc,deployment -l app=lobsters
 ```
-
+<!-- END bash -->
