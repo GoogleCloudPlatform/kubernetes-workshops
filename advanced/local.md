@@ -1,8 +1,4 @@
-# Advanced Concepts
-
-## Local Docker
-
-This document is for cloud, for local docker see [local.md](local.md).
+# Advanced Concepts Local
 
 ## Prerequisites
 
@@ -29,7 +25,7 @@ secret "db-pass" created
 Deploy the database
 
 ```
-kubectl create -f cloud-pv.yaml,database-pvc.yaml
+kubectl create -f local-pv.yaml,database-pvc.yaml
 ```
 
 ```
@@ -76,13 +72,15 @@ Events:
 Also, the frontend service can be created and used for the whole module:
 
 ```
-kubectl create -f ./service-cloud.yaml
+kubectl create -f ./service-local.yaml
 ```
 ```
 service "lobsters" created
 ```
 
-Again, use commands you've learned previously to find the external IP.
+Again, use commands you've learned previously to find the node port,
+and access the site through `localhoast` (linux) or your Docker Machine
+VM IP (Mac/Win).
 
 ### Advanced Pod Patters
 
@@ -289,36 +287,16 @@ Now in a separate terminal window, watch the number of pods with:
 kubectl get pods -w
 ```
 
-Let's use the existing logstash pod we have to generate load, first
-find the name of the pod:
+Use a bash shell on your local machine or Docker VM to generate load:
 
 ```
-kubectl get pods
-```
-```
-NAME                            READY     STATUS    RESTARTS   AGE
-lobsters-1346140349-ok74t       2/2       Running   0          7m
-lobsters-sql-3710543743-d7unn   1/1       Running   0          1h
-logstash-1334877011-jhzbg       1/1       Running   0          1h
-```
-
-This one is `logstash-1334877011-jhzbg`, yours will be different. Then
-start a bash shell inside the logstash container:
-
-```
-kubectl exec -it logstash-1334877011-jhzbg -- /bin/bash
-```
-
-Now we are inside the container, let's generate some load:
-
-```
-while true ; do curl http://lobsters/; done
+while true ; do curl http://localhost:<node-port>/; done
 ```
 
 Watch your other terminal with the pod list, the auto-scaler checks
 every 30s and scales appropriately.
 
-Hit `Ctrl-C` to stop the load, and `exit` to exit the bash shell.
+Hit `Ctrl-C` to stop the load.
 
 ## Cleanup
 
