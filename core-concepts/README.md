@@ -64,7 +64,7 @@ external to the cluster in supported environments.
 Create the service and pod:
 
 <!-- START bash
-sleep 10
+sleep 50
 END bash -->
 
 <!-- START bash -->
@@ -123,7 +123,7 @@ the pod definition, but wrapped in an RC.
 Start lobsters using an RC, use the same service definition:
 
 <!-- START bash
-sleep 10
+sleep 50
 END bash -->
 <!-- START bash -->
 ```
@@ -261,7 +261,7 @@ Start up Lobsters using the Deployment declaration in
 RC declaration.
 
 <!-- START bash
-sleep 10
+sleep 50
 END bash -->
 <!-- START bash -->
 ```
