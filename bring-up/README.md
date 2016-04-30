@@ -1,21 +1,6 @@
 # Cluster Bring-Up
 
+There are two cluster bring-up options:
 
-## Prerequisites
-
-*
-
-## Lab
-
-Download and extract binary release from https://github.com/kubernetes/kubernetes/releases/latest
-
-Start the cluster
-
-<!-- dont-START bash -->
-```
-cluster/kube-up.sh
-```
-<!-- dont-END bash -->
-
-
-## Cleanup
+* [Local Docker](local-docker.md)
+* [Cloud](cloud.md)
