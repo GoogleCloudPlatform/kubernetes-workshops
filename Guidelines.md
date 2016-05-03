@@ -3,8 +3,7 @@
 Workshops should consist of two primary pieces:
 
 1. A README.md.
-2. Slides in the form of
-   [go present](https://godoc.org/golang.org/x/tools/present).
+2. Link to public Google Slides deck.
 
 ## README.md
 
@@ -18,7 +17,7 @@ free to have explanatory text, but limit text using:
   to other places, etc.
 * Try to guide people through one known good path leading to where we
   are going, not covering all the options for alternate paths.
-* Text should have just barely enough explanation of new concepts to
+* Text should have limited explanation of new concepts to
   progress through the workshop.
 
 ## Slides
