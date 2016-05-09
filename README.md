@@ -17,12 +17,12 @@ Name | Level | Time Estimate | Completion Status
 [Quickstart](quickstart) | Beginner | 1 hour | Draft
 [Cluster Bring Up](bring-up) | Beginner | 1 hour | Draft
 [Core Kubernetes Concepts](core-concepts) | Beginner | 4 hours | Draft
-[Storing State](state) | Intermediate | 2 hours | Not Started
-[Dockerize an App](dockerize) | Intermediate | 2 hours | Not Started
-[Advanced Concepts](advanced) | Intermediate | 2 hours | Not Started
-[Networking](networking) | Intermediate | 2 hours | Not Started
-[Troubleshooting](troubleshooting) | Intermediate | 2 hours | Not Started
-[Putting it all together](combine) | Advanced | 2 hours | Not Started
+[Storing State](state) | Intermediate | 2 hours | Yamls done
+[Dockerize an App](dockerize) | Intermediate | 2 hours | Defer
+[Advanced Concepts](advanced) | Intermediate | 2 hours | In Progress
+[Networking](networking) | Intermediate | 2 hours | Defer
+[Troubleshooting](troubleshooting) | Intermediate | 2 hours | Delay
+[Putting it all together](combine) | Advanced | 2 hours | Delay
 
 Status: Not Started --> In Progress --> Draft --> Ready
 
