@@ -19,7 +19,7 @@ Name | Level | Time Estimate | Completion Status
 [Core Kubernetes Concepts](core-concepts) | Beginner | 4 hours | Draft
 [Storing State](state) | Intermediate | 2 hours | Yamls done
 [Dockerize an App](dockerize) | Intermediate | 2 hours | Defer
-[Advanced Concepts](advanced) | Intermediate | 2 hours | In Progress
+[Advanced Concepts](advanced) | Intermediate | 2 hours | Draft
 [Networking](networking) | Intermediate | 2 hours | Defer
 [Troubleshooting](troubleshooting) | Intermediate | 2 hours | Delay
 [Putting it all together](combine) | Advanced | 2 hours | Delay
