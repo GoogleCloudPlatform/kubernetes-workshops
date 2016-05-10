@@ -1,0 +1,8 @@
+filebeat:
+  prospectors:
+    -
+      paths:
+        - "/logdir/*.log"
+output:
+  logstash:
+    hosts: ["logstash:5044"]
