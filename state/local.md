@@ -1,9 +1,5 @@
 # Storing State
 
-## Local Docker
-
-This document is for cloud, for local docker see [local.md](local.md).
-
 ## Prerequisites
 
 * Have a cluster running and a `kubectl` binary configured to talk to
@@ -14,13 +10,14 @@ This document is for cloud, for local docker see [local.md](local.md).
 Create a Service for your app. This will be used for the entire Lab.
 
 ```
-kubectl create -f ./service-cloud.yaml
+kubectl create -f ./service-local.yaml
 ```
 ```
 service "lobsters" created
 ```
 
-Use the commands you have learned in previous modules to find the external IP.
+Use the commands you have learned in previous modules to find the node
+port and Docker VM IP.
 
 ### No Database
 
@@ -220,7 +217,6 @@ Events:
 
 Succeeded! Now check the app and verify it is working fine.
 
-
 We still have a problem with this configuration. We are running a
 database in Kubernetes, but we have no data persistence. The data is
 being stored inside the container, which is inside the Pod. This is
@@ -229,7 +225,8 @@ likes to consider Pods ephemeral and stateless. If the Node were to
 crash, or the Pod be deleted, Kubernetes will reschedule a new Pod for
 the lobsters-sql Deployment, but the data would be lost.
 
-Delete the database and service, leave the frontend running for the next step:
+Delete the database and service, leave the frontend running for the
+next step:
 
 ```
 kubectl delete deployment,svc lobsters-sql
@@ -251,51 +248,38 @@ job "lobsters-rake" deleted
 ### Database with Persistent Volume
 
 To run the database inside Kubernetes, but keep the data persistent,
-we will use a Persistent Volume, which is a Kubernetes object that
-refers to an external storage device. Clouds provide resilient disks
-that can be easily be attached and detached to cluster nodes.
+we will use a Persistent Volume (PV), which is a Kubernetes object
+that usually refers to an external storage device. This is typically a
+resilient cloud disk in clouds, or an NFS or iSCSI disk in on-premise
+clusters.
 
-> Note: For AWS see the docs to create an EBS disk and
-> PersistentVolume object:
-> http://kubernetes.io/docs/user-guide/volumes/#awselasticblockstore
-> http://kubernetes.io/docs/user-guide/persistent-volumes/#persistent-volumes
-
-Crate a cloud disk:
-
-```
-gcloud compute disks create mysql-disk --size 20GiB
-```
-```
-Created [https://www.googleapis.com/compute/v1/projects/myproject/zones/us-central1-c/disks/mysql-disk].
-NAME          ZONE           SIZE_GB  TYPE         STATUS
-mysql-disk    us-central1-c  20       pd-standard  READY
-```
-
-The [cloud-pv.yaml](cloud-pv.yaml) config will create a Persistent
-Volume object of the `gcePersistentDisk` type that refers to the
-`mysql-disk' you created above.
+For running locally on your computer, we will use a `hostPath` type of
+PV. This maps to a directory on the node. This is only as resilient as
+the node, and would not work on a multi-node cluster. Use
+[local-pv.yaml](local-pv.yaml) to create a PV pointing to
+`/tmp/mysql-disk` on your node.
 
 ```
-kubectl create -f ./cloud-pv.yaml
+kubectl create -f ./local-pv.yaml
 ```
 ```
-persistentvolume "pv-1" created
+persistentvolume "local-pv-1" created
 ```
 ...
 ```
 kubectl get pv
 ```
 ```
-NAME      CAPACITY   ACCESSMODES   STATUS      CLAIM     REASON    AGE
-pv-1      20Gi       RWO           Available                       6s
+NAME         CAPACITY   ACCESSMODES   STATUS      CLAIM     REASON    AGE
+local-pv-1   20Gi       RWO           Available                       17s
 ```
 ...
 ```
-kubectl describe pv pv-1
+kubectl describe pv local-pv-1
 ```
 ```
-Name:		pv-1
-Labels:		<none>
+Name:		local-pv-1
+Labels:		type=local
 Status:		Available
 Claim:		
 Reclaim Policy:	Retain
@@ -303,20 +287,16 @@ Access Modes:	RWO
 Capacity:	20Gi
 Message:	
 Source:
-    Type:	GCEPersistentDisk (a Persistent Disk resource in Google Compute Engine)
-    PDName:	mysql-disk
-    FSType:	ext4
-    Partition:	0
-    ReadOnly:	false
+    Type:	HostPath (bare host directory volume)
+    Path:	/tmp/mysql-disk
 ```
 
 Now take a look at [database-pvc.yaml](database-pvc.yaml). This has a
 new Persistent Volume Claim (PVC) object in it. A PVC will claim an
 existing PV in the cluster that meets its requirements. The advantage
 here is that our database config is independent of the cluster
-environment. If we used cloud disks for PVs in our cloud cluster, and
-iSCSI PVs in our on-prem cluster, the database config would be the
-same.
+environment. This PVC can be used to claim the local PV we have, and
+also a PV in a cloud Kubernetes cluster.
 
 The PVC is named `mysql-pv-claim` and is then referenced in the Pod
 specification and mounted to `/var/lib/mysql`. Deploy the new database:
@@ -336,16 +316,16 @@ Now you can see that the PVC is bound to the PV:
 kubectl get pv
 ```
 ```
-NAME      CAPACITY   ACCESSMODES   STATUS    CLAIM                    REASON    AGE
-pv-1      20Gi       RWO           Bound     default/mysql-pv-claim             11m
+NAME         CAPACITY   ACCESSMODES   STATUS    CLAIM                    REASON    AGE
+local-pv-1   20Gi       RWO           Bound     default/mysql-pv-claim             3m
 ```
 ...
 ```
 kubectl get pvc
 ```
 ```
-NAME             STATUS    VOLUME    CAPACITY   ACCESSMODES   AGE
-mysql-pv-claim   Bound     pv-1      20Gi       RWO           4m
+NAME             STATUS    VOLUME       CAPACITY   ACCESSMODES   AGE
+mysql-pv-claim   Bound     local-pv-1   20Gi       RWO           7s
 ```
 
 Re run the Job, as we have a new DB:
@@ -379,17 +359,17 @@ We didn't label the PV, as it is of general use.
 kubectl get pv
 ```
 ```
-NAME      CAPACITY   ACCESSMODES   STATUS     CLAIM                    REASON    AGE
-pv-1      20Gi       RWO           Released   default/mysql-pv-claim             22m
+NAME         CAPACITY   ACCESSMODES   STATUS     CLAIM                    REASON    AGE
+local-pv-1   20Gi       RWO           Released   default/mysql-pv-claim             4m
 ```
 
 You can see it is now released.
 
 ```
-kubectl delete pv pv-1
+kubectl delete pv local-pv-1
 ```
 ```
-persistentvolume "pv-1" deleted
+persistentvolume "local-pv-1" deleted
 ```
 ...
 ```
@@ -397,18 +377,4 @@ kubectl delete secret db-pass
 ```
 ```
 secret "db-pass" deleted
-```
-
-And to delete your data:
-```
-gcloud compute disks delete mysql-disk
-```
-```
-The following disks will be deleted. Deleting a disk is irreversible
-and any data on the disk will be lost.
- - [mysql-disk] in [us-central1-c]
-
-Do you want to continue (Y/n)?  y
-
-Deleted [https://www.googleapis.com/compute/v1/projects/myproject/zones/us-central1-c/disks/mysql-disk].
 ```
