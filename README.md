@@ -14,12 +14,12 @@ This is not an official Google product.
 
 Name | Level | Time Estimate | Completion Status
 ------------- | ------------- | ------------ | ------------
-[Quickstart](quickstart) | Beginner | 1 hour | Draft
-[Cluster Bring Up](bring-up) | Beginner | 1 hour | Draft
-[Core Kubernetes Concepts](core-concepts) | Beginner | 4 hours | Draft
-[Storing State](state) | Intermediate | 2 hours | Yamls done
+[Quickstart](quickstart) | Beginner | 1 hour | Ready
+[Cluster Bring Up](bring-up) | Beginner | 1 hour | Ready
+[Core Kubernetes Concepts](core-concepts) | Beginner | 4 hours | Ready
+[Storing State](state) | Intermediate | 2 hours | Ready
 [Dockerize an App](dockerize) | Intermediate | 2 hours | Defer
-[Advanced Concepts](advanced) | Intermediate | 2 hours | Draft
+[Advanced Concepts](advanced) | Intermediate | 2 hours | Ready
 [Networking](networking) | Intermediate | 2 hours | Defer
 [Troubleshooting](troubleshooting) | Intermediate | 2 hours | Delay
 [Putting it all together](combine) | Advanced | 2 hours | Delay
