@@ -9,7 +9,7 @@ recommended.
 ## Start Kubernetes
 
 ```
-export K8S_VERSION=v1.2.3
+export K8S_VERSION=v1.2.4
 ```
 
 ```
