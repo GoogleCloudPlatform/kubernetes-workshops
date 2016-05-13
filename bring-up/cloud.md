@@ -9,8 +9,11 @@ A cloud account with a supported cloud provider.
 
 ## Lab
 
-Download the `kubernetes.tar.gz` latest binary release from
-https://github.com/kubernetes/kubernetes/releases/latest
+Download the `kubernetes.tar.gz` latest binary release:
+
+```
+curl -O https://github.com/kubernetes/kubernetes/releases/download/v1.2.4/kubernetes.tar.gz
+```
 
 Extract
 
