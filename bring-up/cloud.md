@@ -12,7 +12,7 @@ A cloud account with a supported cloud provider.
 Download the `kubernetes.tar.gz` latest binary release:
 
 ```
-curl -O https://github.com/kubernetes/kubernetes/releases/download/v1.2.4/kubernetes.tar.gz
+curl -LO https://github.com/kubernetes/kubernetes/releases/download/v1.2.4/kubernetes.tar.gz
 ```
 
 Extract
