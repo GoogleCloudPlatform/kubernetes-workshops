@@ -1,12 +1,12 @@
 # Local Docker Cluster Bring-Up
 
-# Prereqs
+## Prereqs
 
 Docker installed and
 configured. [Docker Toolbox](https://docs.docker.com/toolbox/overview/)
 recommended.
 
-# Start Kubernetes
+## Start Kubernetes
 
 ```
 export K8S_VERSION=v1.2.3
@@ -36,7 +36,7 @@ docker run \
         --allow-privileged=true --v=2
 ```
 
-# Setup Kubectl
+## Setup Kubectl
 
 Download `kubectl` to your local directory, and add your local
 directory to your path:
@@ -61,8 +61,15 @@ wget http://storage.googleapis.com/kubernetes-release/release/${K8S_VERSION}/bin
 chmod 755 kubectl
 PATH=$PATH:$(pwd)
 ```
+## Windows / Mac OS X
 
-# Check that your cluster is running
+Create an ssh tunnel for kubectl to talk to your cluster
+
+```
+docker-machine ssh $(docker-machine active) -N -L 8080:localhost:8080
+```
+
+## Check that your cluster is running
 
 ```
 kubectl get nodes
@@ -71,7 +78,7 @@ kubectl get nodes
 NAME        STATUS    AGE
 127.0.0.1   Ready     2s
 ```
-# Start DNS
+## Start DNS
 
 ```
 kubectl create -f ./skydns.yaml
