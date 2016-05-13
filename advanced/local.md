@@ -272,7 +272,12 @@ Now visit the site and we are back to Lobsters version 1.0.
 
 ### Auto-scale
 
-Pod auto-scaling is as simple as:
+Horizontal pod autoscaling requires the Heapster cluster add-on. Heapster was not set up in the local bringup section of this workshop. The below docs describe how autoscaling works, and how to configure Heapster:
+* http://kubernetes.io/docs/user-guide/horizontal-pod-autoscaling/
+* https://github.com/kubernetes/kubernetes/blob/release-1.2/docs/design/horizontal-pod-autoscaler.md#autoscaling-algorithm
+* https://github.com/kubernetes/heapster/blob/master/docs/influxdb.md
+
+Once Heapster is configured, pod auto-scaling is as simple as:
 
 ```
 kubectl autoscale deployment lobsters --min=1 --max=6
