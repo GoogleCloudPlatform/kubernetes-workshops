@@ -399,7 +399,7 @@ kubectl delete secret db-pass
 secret "db-pass" deleted
 ```
 
-And to delete your data:
+Save your cloud disk for the next lab, but when you are ready to delete it:
 ```
 gcloud compute disks delete mysql-disk
 ```
