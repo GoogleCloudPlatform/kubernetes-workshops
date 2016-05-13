@@ -12,17 +12,17 @@ This is not an official Google product.
 
 ## Table of Modules
 
-Name | Level | Time Estimate | Completion Status
-------------- | ------------- | ------------ | ------------
-[Quickstart](quickstart) | Beginner | 1 hour | Ready
-[Cluster Bring Up](bring-up) | Beginner | 1 hour | Ready
-[Core Kubernetes Concepts](core-concepts) | Beginner | 4 hours | Ready
-[Storing State](state) | Intermediate | 2 hours | Ready
-[Dockerize an App](dockerize) | Intermediate | 2 hours | Defer
-[Advanced Concepts](advanced) | Intermediate | 2 hours | Ready
-[Networking](networking) | Intermediate | 2 hours | Defer
-[Troubleshooting](troubleshooting) | Intermediate | 2 hours | Delay
-[Putting it all together](combine) | Advanced | 2 hours | Delay
+Name | Slides | Level | Time Estimate | Completion Status
+------------- | ------------- | ------------- | ------------ | ------------
+[Cluster Bring Up](bring-up) | [Link](https://docs.google.com/presentation/d/1AZSJi4wl1ALfMNuW8X2hoN6DZZVs35dl5lPDtDuWT_U/edit?usp=sharing) | Beginner | 1 hour | Ready
+[Quickstart](quickstart) | [Link](https://docs.google.com/presentation/d/1nH88mgUhcGtuyCD9W1k3blvxrTkcqC3FfcRkiX10JR8/edit?usp=sharing) | Beginner | 1 hour | Ready
+[Core Kubernetes Concepts](core-concepts) | [Link](https://docs.google.com/presentation/d/1JP6-utzrocigFpVyd9IFoZmjPV5vxGhiOONT36XBF_o/edit?usp=sharing) | Beginner | 4 hours | Ready
+[Storing State](state) | [Link](https://docs.google.com/presentation/d/1av0gZl90NS2oPm2u5utht7fZums76fvsh-hqt_JMzJE/edit?usp=sharing) | Intermediate | 2 hours | Ready
+[Advanced Concepts](advanced) | [Link](https://docs.google.com/presentation/d/1_mWY3fTavAYjD9twABOOEE0dRVz8YeMpeJ0s1GgvHpk/edit?usp=sharing) | Intermediate | 2 hours | Ready
+[Dockerize an App](dockerize) | [Link]() | Intermediate | 2 hours | Defer
+[Networking](networking) | [Link]() | Intermediate | 2 hours | Defer
+[Troubleshooting](troubleshooting) | [Link]() | Intermediate | 2 hours | Delay
+[Putting it all together](combine) | [Link]() | Advanced | 2 hours | Delay
 
 Status: Not Started --> In Progress --> Draft --> Ready
 
