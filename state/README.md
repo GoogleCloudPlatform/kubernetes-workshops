@@ -260,7 +260,7 @@ that can be easily be attached and detached to cluster nodes.
 > http://kubernetes.io/docs/user-guide/volumes/#awselasticblockstore
 > http://kubernetes.io/docs/user-guide/persistent-volumes/#persistent-volumes
 
-Crate a cloud disk:
+Crate a cloud disk, make sure you use the same zone as your cluster.
 
 ```
 gcloud compute disks create mysql-disk --size 20GiB
