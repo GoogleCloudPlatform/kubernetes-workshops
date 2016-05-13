@@ -63,7 +63,7 @@ PATH=$PATH:$(pwd)
 ```
 ## Windows / Mac OS X
 
-Create an ssh tunnel for kubectl to talk to your cluster
+In another terminal, create an ssh tunnel for kubectl to talk to your cluster. Leave this running.
 
 ```
 docker-machine ssh $(docker-machine active) -N -L 8080:localhost:8080
