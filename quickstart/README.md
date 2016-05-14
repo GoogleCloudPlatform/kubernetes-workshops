@@ -62,6 +62,9 @@ kubectl logs lobsters-3295177660-xg5t2
 Let's see if lobsters is up and running, first we will do a private
 port forward from our machine to the container.
 
+> Note: If you're running kubectl on a remote machine (or VM), skip
+> this step. ("localhost" is remote so it won't work)
+
 > Note: For Mac OS / Windows, use a port other than 8080.
 
 ```
