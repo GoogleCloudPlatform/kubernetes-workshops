@@ -91,7 +91,7 @@ kubectl expose deployment lobsters --port=80 --target-port=3000 --type=LoadBalan
 service "lobsters" exposed
 ```
 
-Get the external IP, this will take a minute.
+Get the external IP, this will take a minute. EXTERNAL-IP will be blank until the load balancer is ready.
 
 ```
 kubectl get service lobsters
