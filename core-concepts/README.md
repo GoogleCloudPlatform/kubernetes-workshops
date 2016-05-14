@@ -53,7 +53,8 @@ kubectl delete pod lobsters
 pod "lobsters" deleted
 ```
 
-The pod is gone forever
+The pod is gone forever. The same would be true if the processes in 
+the pod terminated for any reason.
 
 ### Service
 
