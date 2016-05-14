@@ -82,7 +82,7 @@ service "lobsters" created
 pod "lobsters" created
 ```
 
-Wait for the external IP:
+Get the external IP, this will take a minute. EXTERNAL-IP will be blank until the load balancer is ready.
 
 <!-- START bash -->
 ```
