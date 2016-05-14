@@ -138,7 +138,11 @@ Cluster validation succeeded
 
 Great! Now `kubectl` is configured with authentication to communicate
 with your cluster. This is set up for you in your `~/.kube/config`
-file.
+file. 
+
+> Note: If you are using GCP and have `gcloud` installed, you will
+> have the latest release of `kubectl` installed in your path. 
+> You can skip the rest of this section. 
 
 The release tarball contains various builds of `kubectl` as
 `platforms/<os>/<arch>/kubectl`. There is also a helper script under
@@ -148,8 +152,15 @@ one of the following:
 * Add the proper `platforms/<os>/<arch>/kubectl` binary to your path.
 * Use `cluster/kubectl.sh` in lieu of `kubectl`.
 
-> Note: If you are using GCP and have `gcloud` installed, you will
-> have the latest release of `kubectl` installed in your path.
+Run `kubectl` or `cluster/kubectl.sh` and verify communication with the 
+cluster:
+
+```
+kubectl cluster-info
+```
+
+You should see a list of url endpoints for the cluster. 
+
 
 ## Cleanup
 
