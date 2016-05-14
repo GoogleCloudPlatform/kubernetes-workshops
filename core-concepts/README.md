@@ -99,7 +99,7 @@ Check that it is working by visiting the external IP in your browser.
 
 
 
-Delete
+Delete Pods and Services where the `app` label equals `lobsters`.
 
 <!-- START bash -->
 ```
@@ -240,7 +240,7 @@ SQLite file inside the container. You could post a new link to the
 site, refresh and hit a different replica! The module
 [Storing State](../state) will cover solutions.
 
-Delete
+Delete Replication Controllers and Services where the `app` label equals `lobsters`.
 
 <!-- START bash -->
 ```
@@ -331,7 +331,8 @@ use `kubectl apply` to switch between the two version and observe.
 
 ## Cleanup
 
-Deletes everything created in this Lab
+Deletes everything created in this Lab: resources whose `app` label equals `lobsters`.
+
 
 <!-- START bash -->
 ```
