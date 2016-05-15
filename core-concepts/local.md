@@ -4,6 +4,8 @@
 
 * Have a cluster running and a `kubectl` binary configured to talk to
   that cluster
+* Commands assume that you have a local copy of this git repository, 
+  and `core-concepts` is the current directory.
 
 ## Lab
 
