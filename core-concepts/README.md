@@ -8,9 +8,8 @@ This document is for cloud, for local docker see [local.md](local.md).
 
 * Have a cluster running and a `kubectl` binary configured to talk to
   that cluster
-* Have a local copy of this workshop git repository. Lab commands 
-  assume that you have a local copy, and `core-concepts` is the
-  current directory.
+* Commands assume that you have a local copy of this git repository, 
+  and `core-concepts` is the current directory.
 
 ## Lab
 
