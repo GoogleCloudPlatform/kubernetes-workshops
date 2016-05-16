@@ -84,7 +84,7 @@ service "lobsters" created
 
 Again, use commands you've learned previously to find the external IP.
 
-### Advanced Pod Patters
+### Advanced Pod Patterns
 
 Pods can contain multiple containers. Here, the frontend Rails app is
 sharing it's log directory with a sidecar logger container. The
