@@ -39,6 +39,51 @@ kubectl get pods
 NAME       READY     STATUS    RESTARTS   AGE
 lobsters   1/1       Running   0          1m
 ```
+Look at the details
+
+```
+kubectl describe pod lobsters
+```
+```
+Name:		lobsters
+Namespace:	default
+Node:		gke-myclus-default-pool-c6da95a3-ot2d/10.128.0.6
+Start Time:	Sun, 15 May 2016 19:54:57 -0700
+Labels:		app=lobsters
+Status:		Running
+IP:		10.0.2.4
+Controllers:	<none>
+Containers:
+  lobsters:
+    Container ID:	docker://e860dcd38e802d6b587a46ddfd21a750e2bc454cf0bf131ddaa2649d4d1957eb
+    Image:		gcr.io/google-samples/lobsters:1.0
+    Image ID:		docker://4e7ae90a0dcf3ca1903ead56199ed1839ed84373479d758c538b9028702672a1
+    Port:		3000/TCP
+    QoS Tier:
+      cpu:	Burstable
+      memory:	BestEffort
+    Requests:
+      cpu:		100m
+    State:		Running
+      Started:		Sun, 15 May 2016 19:54:58 -0700
+    Ready:		True
+    Restart Count:	0
+    Environment Variables:
+Conditions:
+  Type		Status
+  Ready 	True 
+Volumes:
+  default-token-oqs86:
+    Type:	Secret (a volume populated by a Secret)
+    SecretName:	default-token-oqs86
+Events:
+  FirstSeen	LastSeen	Count	From						SubobjectPath			Type		Reason		Message
+  ---------	--------	-----	----						-------------			--------	------		-------
+  19s		19s		1	{default-scheduler }								Normal		Scheduled	Successfully assigned lobsters to gke-myclus-default-pool-c6da95a3-ot2d
+  18s		18s		1	{kubelet gke-myclus-default-pool-c6da95a3-ot2d}	spec.containers{lobsters}	Normal		Pulled		Container image "gcr.io/google-samples/lobsters:1.0" already present on machine
+  18s		18s		1	{kubelet gke-myclus-default-pool-c6da95a3-ot2d}	spec.containers{lobsters}	Normal		Created		Created container with docker id e860dcd38e80
+  18s		18s		1	{kubelet gke-myclus-default-pool-c6da95a3-ot2d}	spec.containers{lobsters}	Normal		Started		Started container with docker id e860dcd38e80
+```
 
 Delete the pod
 
