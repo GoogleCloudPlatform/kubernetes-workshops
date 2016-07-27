@@ -68,6 +68,13 @@ In another terminal, create an ssh tunnel for kubectl to talk to your cluster. L
 ```
 docker-machine ssh $(docker-machine active) -N -L 8080:localhost:8080
 ```
+## Create kubernetes cluster configuration (Optional)
+
+```
+kubectl config set-cluster test-doc --server=http://localhost:8080
+kubectl config set-context test-doc --cluster=test-doc
+kubectl config use-context test-doc
+```
 
 ## Check that your cluster is running
 
