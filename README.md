@@ -2,15 +2,22 @@
 
 # Kubernetes Workshops
 
-This repository contains various modules that can be combined to
-create Kubernetes workshops of various lengths and focus. Each
-directory is a module and contains a README.md that walks through the
-module and gopresents slides that accompany the module. If code,
+This repository contains both complete workshops, as well as
+segmented workshop modules that can be combined to create Kubernetes
+workshops of various lengths and focus.
+
+Modules contain a README.md that walks through the module. If code,
 configuration, or scrips are needed, it is included and tested.
 
 This is not an official Google product.
 
-## Table of Modules
+## Full Workshops
+| workshop  | version | description |
+| --- | --- | --- |
+| [Kubernetes 101](bundles/kubernetes-101) | v1.2.0 | Covers the basics of using Kubernetes to manage applications at scale.  In this workshop, you'll take an app, build turn it into a docker container, then use Kubernetes to deploy, scale, and update it. This workshop comes in multiple versions:  A video course, a codelab with an accompanying talk, or a set of workshop material with slides. |
+
+
+## Individual Modules
 
 Name | Slides | Level | Time Estimate | Completion Status
 ------------- | ------------- | ------------- | ------------ | ------------
