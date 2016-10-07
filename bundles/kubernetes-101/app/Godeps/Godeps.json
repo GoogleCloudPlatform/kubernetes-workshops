@@ -1,0 +1,6 @@
+{
+	"ImportPath": "github.com/askcarter/io16/app",
+	"GoVersion": "go1.6",
+	"GodepVersion": "v62",
+	"Deps": []
+}
