@@ -59,7 +59,7 @@ vim deployments/hello.yaml
 ```
 
 ```
-image: "kelseyhightower/hello:2.0.0"
+image: "askcarter/hello:2.0.0"
 ```
 
 ```
