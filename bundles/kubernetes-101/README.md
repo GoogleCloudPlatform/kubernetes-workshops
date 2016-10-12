@@ -28,35 +28,6 @@ Resource for creating your own Kubernetes workshop event
 | [Codelab](https://codelabs-preview.appspot.com/?file_id=13RVMEz5EWmG6-2ZeQIR_K14LWVipqfM-Bjex2wcFdP4#0) | 180m | Step by step codelab to walk through. |
 | [Slides](https://docs.google.com/presentation/d/13SsyxNXnb2pB05LOdjtgBNjARD_qw9Dl0FLZeAlQbKA/edit?usp=sharing) | n/a | Slides that go along with the talk. |
 
-## Resources and Community
-### Learn More
-http://kubernetes.io/  
-
-[Kubernetes documentation](http://kubernetes.io/docs/)  
-
-Kubernetes [user guide](http://kubernetes.io/docs/user-guide/) and [troubleshooting guide](http://kubernetes.io/docs/troubleshooting/)  
-
-[Kubernetes Github Repository](https://github.com/kubernetes/kubernetes)  
-
-
-Videos:  
-
-[Kubernetes Cluster Federation Sneak Peek](https://www.youtube.com/watch?v=86jZdmAjWns)  
-
-[What’s New in K8s 1.3](https://www.youtube.com/watch?v=aMMgbDSvZ7E)  
-
-[Walkthrough of Kubernetes 1.3 Minikube](https://www.youtube.com/watch?v=OYJrKYkogIU)
-
-### Ask Questions
-[Kubernetes on Stackoverflow](http://stackoverflow.com/questions/tagged/kubernetes)
-
-### Keep in Touch
-[@kubernetesio](https://twitter.com/kubernetesio)  
-
-[#kubernetes-users on Slack](http://slack.kubernetes.io/)  
-
-[Kubernetes-dev Google Group](https://groups.google.com/forum/#!forum/kubernetes-dev)
-
 ## Request Support for Your Event
 
 Office hours (optional) can be added and scheduled after we obtain questions from community organizers and running them by the content creator. As an organizer, you are encouraged to work with your Google regional lead or community manager to figure out ways the Developer Relations team can support your event. 
