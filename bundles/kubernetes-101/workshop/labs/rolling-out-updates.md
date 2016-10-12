@@ -27,7 +27,7 @@ vim deployments/auth.yaml
 ```
 
 ```
-image: "kelseyhightower/auth:2.0.0"
+image: "askcarter/auth:2.0.0"
 ```
 
 ```
