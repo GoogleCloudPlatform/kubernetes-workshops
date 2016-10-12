@@ -30,22 +30,31 @@ Resource for creating your own Kubernetes workshop event
 
 ## Resources and Community
 ### Learn More
-http://kubernetes.io/
-[Kubernetes documentation](http://kubernetes.io/docs/)
-Kubernetes [user guide](http://kubernetes.io/docs/user-guide/) and [troubleshooting guide](http://kubernetes.io/docs/troubleshooting/)
-[Kubernetes Github Repository](https://github.com/kubernetes/kubernetes)
+http://kubernetes.io/  
 
-Videos:
-[Kubernetes Cluster Federation Sneak Peek](https://www.youtube.com/watch?v=86jZdmAjWns)
-[What’s New in K8s 1.3](https://www.youtube.com/watch?v=aMMgbDSvZ7E)
+[Kubernetes documentation](http://kubernetes.io/docs/)  
+
+Kubernetes [user guide](http://kubernetes.io/docs/user-guide/) and [troubleshooting guide](http://kubernetes.io/docs/troubleshooting/)  
+
+[Kubernetes Github Repository](https://github.com/kubernetes/kubernetes)  
+
+
+Videos:  
+
+[Kubernetes Cluster Federation Sneak Peek](https://www.youtube.com/watch?v=86jZdmAjWns)  
+
+[What’s New in K8s 1.3](https://www.youtube.com/watch?v=aMMgbDSvZ7E)  
+
 [Walkthrough of Kubernetes 1.3 Minikube](https://www.youtube.com/watch?v=OYJrKYkogIU)
 
 ### Ask Questions
 [Kubernetes on Stackoverflow](http://stackoverflow.com/questions/tagged/kubernetes)
 
 ### Keep in Touch
-[@kubernetesio](https://twitter.com/kubernetesio)
-[#kubernetes-users on Slack](http://slack.kubernetes.io/)
+[@kubernetesio](https://twitter.com/kubernetesio)  
+
+[#kubernetes-users on Slack](http://slack.kubernetes.io/)  
+
 [Kubernetes-dev Google Group](https://groups.google.com/forum/#!forum/kubernetes-dev)
 
 ## Request Support for Your Event
