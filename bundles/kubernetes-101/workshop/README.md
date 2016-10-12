@@ -9,29 +9,7 @@ Kubernetes Version: v1.2.2
 
 All of the code for this workshop was written by [Kelsey Hightower](https://twitter.com/kelseyhightower).
 
-## Formats
-
-### Course with Codelab
-
-| Resource  | duration | description | 
-| --- | --- | --- |
-| [Intro video](https://www.youtube.com/watch?v=T59RtLov9E0) | 5m | Course intro video. |
-| [Scalable Microservices with Kubernetes](https://www.udacity.com/course/scalable-microservices-with-kubernetes--ud615) | 180m | This is a detailed introductory Kubernetes course with industry experts like Kelsey Hightower, Adrian Cockcroft, and Carter Morgan. Just play the videos and follow along. |
-
-### Kubernetes 101 Talk with Codelab, and Slides with speaker notes
-
-| Resource  | duration | description | 
-| --- | --- | --- |
-| [Talk](https://www.youtube.com/watch?v=21hXNReWsUU) | 30m | Course intro video. |
-| [Codelab](https://codelabs-preview.appspot.com/?file_id=13RVMEz5EWmG6-2ZeQIR_K14LWVipqfM-Bjex2wcFdP4#0) | 180m | Step by step codelab to walk through. |
-| [Slides](https://docs.google.com/presentation/d/13SsyxNXnb2pB05LOdjtgBNjARD_qw9Dl0FLZeAlQbKA/edit?usp=sharing) | n/a | Slides that go along with the talk. |
-
-### Kubernetes 101 Workshop with Slides and Labs
-
-| Resource  | duration | description | 
-| --- | --- | --- |
-| [Slides](https://docs.google.com/presentation/d/1n3avmL5GCYCYJEr8pLFBKe0wzvoOiUV2vxyW_pYFL5s/edit?usp=sharing) | n/a | Slides with Speakernotes. |
-| Workshop  | 180m | Kelsey Hightower's craftcon workshop -- the basis for the above talk and course.  The labs are below.  |
+There are also [slides with speaker notes](https://docs.google.com/presentation/d/1n3avmL5GCYCYJEr8pLFBKe0wzvoOiUV2vxyW_pYFL5s/edit?usp=sharing).
 
 ## Labs
 
