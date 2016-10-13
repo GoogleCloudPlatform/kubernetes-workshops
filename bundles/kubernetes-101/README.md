@@ -25,7 +25,7 @@ Resource for creating your own Kubernetes workshop event
 | Resource  | duration | description | 
 | --- | --- | --- |
 | [Talk](https://www.youtube.com/watch?v=21hXNReWsUU) | 30m | Course intro video. |
-| [Codelab](https://codelabs.developers.google.com/codelabs/cloud-orchestrate-with-kubernetes/#0) | 180m | Step by step codelab to walk through. |
+| [Codelab](https://codelabs.developers.google.com/codelabs/cloud-orchestrate-with-kubernetes/#0) | 60m | Step by step codelab to walk through. |
 | [Slides](https://docs.google.com/presentation/d/13SsyxNXnb2pB05LOdjtgBNjARD_qw9Dl0FLZeAlQbKA/edit?usp=sharing) | n/a | Slides that go along with the talk. |
 
 ## Request Support for Your Event
