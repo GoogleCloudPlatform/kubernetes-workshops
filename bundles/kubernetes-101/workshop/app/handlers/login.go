@@ -6,7 +6,7 @@ import (
 	"time"
 
 	"github.com/dgrijalva/jwt-go"
-	"github.com/askcarter/io16/app/user"
+	"github.com/GoogleCloudPlatform/kubernetes-workshops/bundles/kubernetes-101/workshop/app/user"
 	"golang.org/x/crypto/bcrypt"
 )
 

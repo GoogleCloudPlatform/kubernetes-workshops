@@ -10,8 +10,8 @@ import (
 	"syscall"
 
 	"github.com/braintree/manners"
-	"github.com/askcarter/io16/app/handlers"
-	"github.com/askcarter/io16/app/health"
+	"github.com/GoogleCloudPlatform/kubernetes-workshops/bundles/kubernetes-101/workshop/app/handlers"
+	"github.com/GoogleCloudPlatform/kubernetes-workshops/bundles/kubernetes-101/workshop/app/health"
 )
 
 const version = "1.0.0"

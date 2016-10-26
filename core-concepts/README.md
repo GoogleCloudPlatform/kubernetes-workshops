@@ -92,6 +92,9 @@ Delete the pod
 kubectl delete pod lobsters
 ```
 <!-- END bash -->
+<!-- START bash
+while kubectl get pod lobsters; do echo running; sleep 1; done
+END bash -->
 
 ```
 pod "lobsters" deleted
@@ -110,10 +113,6 @@ definition. The service is for port 80, but routes to the port labeled
 external to the cluster in supported environments.
 
 Create the service and pod:
-
-<!-- START bash
-sleep 300
-END bash -->
 
 <!-- START bash -->
 ```
@@ -150,6 +149,10 @@ Delete Pods and Services where the `app` label equals `lobsters`.
 kubectl delete pod,svc -l app=lobsters
 ```
 <!-- END bash -->
+<!-- START bash
+while kubectl get pod lobsters; do echo running; sleep 1; done
+while kubectl get service lobsters; do echo running; sleep 1; done
+END bash -->
 
 ```
 pod "lobsters" deleted
@@ -169,10 +172,6 @@ See [rc.yaml](rc.yaml) for the RC definition. It is mostly the same as
 the pod definition, but wrapped in an RC.
 
 Start lobsters using an RC, use the same service definition:
-
-<!-- START bash
-sleep 300
-END bash -->
 
 <!-- START bash -->
 ```
@@ -291,6 +290,11 @@ Delete Replication Controllers and Services where the `app` label equals `lobste
 kubectl delete rc,svc -l app=lobsters
 ```
 <!-- END bash -->
+<!-- START bash
+while kubectl get rc lobsters; do echo running; sleep 1; done
+while kubectl get service lobsters; do echo running; sleep 1; done
+while [ -n "$(kubectl get pod -l app=lobsters)" ]; do echo running; done
+END bash -->
 
 ```
 replicationcontroller "lobsters" deleted
@@ -308,10 +312,6 @@ while change in Deployments are controlled.
 Start up Lobsters using the Deployment declaration in
 [dep.yaml](dep.yaml). You'll notice that it is almost identical to an
 RC declaration.
-
-<!-- START bash
-sleep 300
-END bash -->
 
 <!-- START bash -->
 ```
@@ -383,3 +383,8 @@ Deletes everything created in this Lab: resources whose `app` label equals `lobs
 kubectl delete pod,rc,svc,deployment -l app=lobsters
 ```
 <!-- END bash -->
+<!-- START bash
+while kubectl get deployment lobsters; do echo running; sleep 1; done
+while kubectl get service lobsters; do echo running; sleep 1; done
+while [ -n "$(kubectl get pod -l app=lobsters)" ]; do echo running; done
+END bash -->
