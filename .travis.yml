@@ -23,7 +23,7 @@ env:
   GOOGLE_APPLICATION_CREDENTIALS=$TRAVIS_BUILD_DIR/client_secrets.json
 
 before_install:
-- openssl aes-256-cbc -K $encrypted_b00a0afd0ebd_key -iv $encrypted_b00a0afd0ebd_iv -in client_secrets.json.enc -out client_secrets.json -d
+- openssl aes-256-cbc -K $encrypted_b00a0afd0ebd_key -iv $encrypted_b00a0afd0ebd_iv -in client_secrets.json.enc -out $GOOGLE_APPLICATION_CREDENTIALS -d
 - if [ ! -d $HOME/gcloud/google-cloud-sdk ]; then
   mkdir -p $HOME/gcloud &&
   wget https://dl.google.com/dl/cloudsdk/release/google-cloud-sdk.tar.gz --directory-prefix=$HOME/gcloud &&
@@ -33,8 +33,8 @@ before_install:
   cd $TRAVIS_BUILD_DIR;
   fi
 - gcloud -q components update
-- if [ -a client_secrets.json ]; then
-  gcloud -q auth activate-service-account --key-file client_secrets.json;
+- if [ -a $GOOGLE_APPLICATION_CREDENTIALS ]; then
+  gcloud -q auth activate-service-account --key-file $GOOGLE_APPLICATION_CREDENTIALS;
   fi
 - gcloud -q components install kubectl
 - gcloud -q config set project cloud-samples-tests
@@ -46,7 +46,7 @@ before_script:
 - gcloud -q container clusters create --num-nodes 2 kubernetes-workshops
 
 script:
--  travis_wait go test -v -timeout 60m ./...
+- travis_wait 45 go test -v -timeout 44m ./test
 
 after_script:
 - gcloud -q container clusters delete kubernetes-workshops

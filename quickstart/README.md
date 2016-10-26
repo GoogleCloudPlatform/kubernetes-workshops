@@ -128,3 +128,8 @@ Delete your resources
 kubectl delete deployment,service lobsters
 ```
 <!-- END bash -->
+<!-- START bash
+while kubectl get deployment lobsters; do echo running; sleep 1; done
+while kubectl get service lobsters; do echo running; sleep 1; done
+while [ -n "$(kubectl get pod -l run=lobsters)" ]; do echo running; done
+END bash -->
