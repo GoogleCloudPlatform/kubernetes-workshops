@@ -14,7 +14,7 @@ This is not an official Google product.
 ## Full Workshops
 | workshop  | version | description |
 | --- | --- | --- |
-| [Kubernetes 101](bundles/kubernetes-101) | v1.2.0 | Covers the basics of using Kubernetes to manage applications at scale.  In this workshop, you'll take an app, build turn it into a docker container, then use Kubernetes to deploy, scale, and update it. This workshop comes in multiple versions:  A video course, a codelab with an accompanying talk, or a set of workshop material with slides. |
+| [Kubernetes 101](bundles/kubernetes-101) | v1.2.0 | Covers the basics of using Kubernetes to manage applications at scale.  In this workshop, you'll take an app, build it into a docker container, then use Kubernetes to deploy, scale, and update it. This workshop comes in multiple versions:  A video course, a codelab with an accompanying talk, or a set of workshop material with slides. |
 
 
 ## Individual Modules
@@ -63,7 +63,7 @@ Status: Not Started --> In Progress --> Draft --> Ready
 * discuss RC
 * scale pod up
 * introduce deployments
-* move everything under a deplyoment
+* move everything under a deployment
 * update to new versions of our app, quick rolling update
   * lightweight here - more detail in "Advanced" module
 
@@ -71,7 +71,7 @@ Status: Not Started --> In Progress --> Draft --> Ready
 
 * Deploy an app with MySQL
 * multiple iterations where to store the data, how it goes away
-  * start with host voulme, end at persistant disk
+  * start with host volume, end at persistent disk
 * More of a lecture module, slides discuss state in greater length
 
 ### Dockerize an App
@@ -99,7 +99,7 @@ Status: Not Started --> In Progress --> Draft --> Ready
 * More of a lecture module, slides discuss networking in greater length
 
 * Types of external services VIP/nodeport, run service with each and
-  see how we get into the cluister
+  see how we get into the cluster
 * discuss subnets, explore on running nodes
 * How K8s networking works
 * Setting up an external load balancer - Nginx
