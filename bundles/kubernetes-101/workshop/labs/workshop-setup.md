@@ -7,6 +7,16 @@
 * Enable Compute Engine (this may take a few minutes).
 * Click the following button to activate [Cloud Shell](https://cloud.google.com/shell/docs),
 which is your "command line in the cloud" and will be used complete the labs. ![Cloud Shell Icon](https://cloud.google.com/shell/docs/images/shell_icon.png)
+* Open the menu icon on the top left.                                             
+![Menu](https://codelabs.developers.google.com/codelabs/cloud-speech-intro/img/742dc285f86cdd1f.png)
+* Select **API Manager** from the drop down.      
+![API-Manager](https://codelabs.developers.google.com/codelabs/cloud-speech-intro/img/4cafd05ec8d75ebf.png).
+* select **ENABLE API**.  
+ ![Enable-API](https://codelabs.developers.google.com/codelabs/cloud-speech-intro/img/24185da15bfb437f.png)
+* Under Google Cloud APIs, click on **Container Engine API**. If you need help finding the API, use the search field.
+* Click **ENABLE**.  
+![Enable](https://codelabs.developers.google.com/codelabs/cloud-speech-intro/img/985398850889c886.png)
+* Wait for a few seconds for it to enable.
 
 #### Provision Kubernetes using Google Container Engine (GKE)
 
