@@ -6,7 +6,6 @@ Kubernetes makes it easy to rollout updates to your applications using the built
 * Pause and resume an active rolling update
 * Rollback a deployment to a previous revision
 
-```
 
 ## Tutorial: Rollout a new version of the Auth service
 
