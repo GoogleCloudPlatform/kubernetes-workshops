@@ -6,18 +6,12 @@ Kubernetes makes it easy to rollout updates to your applications using the built
 * Pause and resume an active rolling update
 * Rollback a deployment to a previous revision
 
-Update to kubectl 1.3.0
-
-```
-wget https://storage.googleapis.com/kubernetes-release/release/v1.3.0/bin/linux/amd64/kubectl
-chmod +x kubectl
-sudo mv kubectl /usr/local/bin
 ```
 
 ## Tutorial: Rollout a new version of the Auth service
 
 ```
-/usr/local/bin/kubectl rollout history deployment auth
+kubectl rollout history deployment auth
 ```
 
 Modify the auth deployment image:
@@ -31,25 +25,25 @@ image: "askcarter/auth:2.0.0"
 ```
 
 ```
-/usr/local/bin/kubectl apply -f deployments/auth.yaml --record
+kubectl apply -f deployments/auth.yaml --record
 ```
 
 ```
-/usr/local/bin/kubectl describe deployments auth
+kubectl describe deployments auth
 ```
 
 ```
-/usr/local/bin/kubectl get replicasets
+kubectl get replicasets
 ```
 
 ```
-/usr/local/bin/kubectl rollout history deployment auth
+kubectl rollout history deployment auth
 ```
 
 ## Tutorial: Pause and Resume an Active Rollout
 
 ```
-/usr/local/bin/kubectl rollout history deployment hello
+kubectl rollout history deployment hello
 ```
 
 Modify the hello deployment image:
@@ -63,19 +57,19 @@ image: "askcarter/hello:2.0.0"
 ```
 
 ```
-/usr/local/bin/kubectl apply -f deployments/hello.yaml --record
+kubectl apply -f deployments/hello.yaml --record
 ```
 
 ```
-/usr/local/bin/kubectl describe deployments hello
+kubectl describe deployments hello
 ```
 
 ```
-/usr/local/bin/kubectl rollout pause deployment hello
+kubectl rollout pause deployment hello
 ```
 
 ```
-/usr/local/bin/kubectl rollout resume deployment hello
+kubectl rollout resume deployment hello
 ```
 
 ## Exercise: Rollback the Hello service
