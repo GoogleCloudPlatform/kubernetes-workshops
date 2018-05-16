@@ -173,37 +173,75 @@ create multiple volumes.
 ```
 kubectl create -f ../local-pvs.yaml
 ```
+```
+persistentvolume "db-local-pv-1" created
+persistentvolume "db-local-pv-2" created
+persistentvolume "db-local-pv-3" created
+persistentvolume "db-local-pv-4" created
+persistentvolume "db-local-pv-5" created
+persistentvolume "db-local-pv-6" created
+persistentvolume "db-local-pv-7" created
+persistentvolume "db-local-pv-8" created
+persistentvolume "db-local-pv-9" created
+persistentvolume "db-local-pv-10" created
+persistentvolume "db-local-pv-11" created
+persistentvolume "db-local-pv-12" created
+persistentvolume "db-local-pv-13" created
+persistentvolume "db-local-pv-14" created
+persistentvolume "db-local-pv-15" created
+```
 ...
 ```
 kubectl get pv
 ```
 ```
-NAME         CAPACITY   ACCESSMODES   STATUS      CLAIM     REASON    AGE
-local-pv-1   20Gi       RWO           Available                       17s
+NAME             CAPACITY   ACCESS MODES   RECLAIM POLICY   STATUS      CLAIM     STORAGECLASS   REASON    AGE
+db-local-pv-1    20Gi       RWO            Delete           Available                                      1m
+db-local-pv-10   20Gi       RWO            Delete           Available                                      1m
+db-local-pv-11   20Gi       RWO            Delete           Available                                      1m
+db-local-pv-12   20Gi       RWO            Delete           Available                                      1m
+db-local-pv-13   20Gi       RWO            Delete           Available                                      1m
+db-local-pv-14   20Gi       RWO            Delete           Available                                      1m
+db-local-pv-15   20Gi       RWO            Delete           Available                                      1m
+db-local-pv-2    20Gi       RWO            Delete           Available                                      1m
+db-local-pv-3    20Gi       RWO            Delete           Available                                      1m
+db-local-pv-4    20Gi       RWO            Delete           Available                                      1m
+db-local-pv-5    20Gi       RWO            Delete           Available                                      1m
+db-local-pv-6    20Gi       RWO            Delete           Available                                      1m
+db-local-pv-7    20Gi       RWO            Delete           Available                                      1m
+db-local-pv-8    20Gi       RWO            Delete           Available                                      1m
+db-local-pv-9    20Gi       RWO            Delete           Available                                      1m
+
 ```
 ...
 ```
-kubectl describe pv local-pv-1
+kubectl describe pv db-local-pv-1
 ```
 ```
-Name:		local-pv-1
-Labels:		type=local
-Status:		Available
+Name:            db-local-pv-1
+Labels:          type=local
+Annotations:     <none>
+Finalizers:      []
+StorageClass:
+Status:          Available
 Claim:
-Reclaim Policy:	Retain
-Access Modes:	RWO
-Capacity:	20Gi
+Reclaim Policy:  Delete
+Access Modes:    RWO
+Capacity:        20Gi
+Node Affinity:   <none>
 Message:
 Source:
-    Type:	HostPath (bare host directory volume)
-    Path:	/tmp/mysql-disk
+    Type:          HostPath (bare host directory volume)
+    Path:          /tmp/mysql-disk-1
+    HostPathType:
+Events:            <none>
 ```
 
 Now take a look at [database-pvc.yaml](database-pvc.yaml). This has a
 new Persistent Volume Claim (PVC) object in it. A PVC will claim an
 existing PV in the cluster that meets its requirements. The advantage
 here is that our database config is independent of the cluster
-environment. This PVC can be used to claim the local PV we have, and
+environment. This PVC can be used to claim one of the local PV we have, and
 also a PV in a cloud Kubernetes cluster.
 
 The PVC is named `mysql-pv-claim` and is then referenced in the Pod
@@ -221,19 +259,20 @@ deployment "lobsters-sql" created
 Now you can see that the PVC is bound to the PV:
 
 ```
-kubectl get pv
-```
-```
-NAME         CAPACITY   ACCESSMODES   STATUS    CLAIM                    REASON    AGE
-local-pv-1   20Gi       RWO           Bound     default/mysql-pv-claim             3m
-```
-...
-```
 kubectl get pvc
 ```
 ```
-NAME             STATUS    VOLUME       CAPACITY   ACCESSMODES   AGE
-mysql-pv-claim   Bound     local-pv-1   20Gi       RWO           7s
+NAME             STATUS    VOLUME          CAPACITY   ACCESS MODES   STORAGECLASS   AGE
+mysql-pv-claim   Bound     db-local-pv-2   20Gi       RWO                           22s
+```
+Depending on which persistent volume was assigned to you, issue the command:
+...
+```
+kubectl get pv {your-assigned-pv}
+```
+```
+NAME            CAPACITY   ACCESS MODES   RECLAIM POLICY   STATUS    CLAIM                 STORAGECLASS   REASON    AGE
+db-local-pv-2   20Gi       RWO            Delete           Bound     ns15/mysql-pv-claim                            5m
 ```
 
 Re run the Job, as we have a new DB:
@@ -267,18 +306,25 @@ We didn't label the PV, as it is of general use.
 kubectl get pv
 ```
 ```
-NAME         CAPACITY   ACCESSMODES   STATUS     CLAIM                    REASON    AGE
-local-pv-1   20Gi       RWO           Released   default/mysql-pv-claim             4m
+NAME             CAPACITY   ACCESS MODES   RECLAIM POLICY   STATUS      CLAIM     STORAGECLASS   REASON    AGE
+db-local-pv-1    20Gi       RWO            Delete           Available                                      6m
+db-local-pv-10   20Gi       RWO            Delete           Available                                      6m
+db-local-pv-11   20Gi       RWO            Delete           Available                                      6m
+db-local-pv-12   20Gi       RWO            Delete           Available                                      6m
+db-local-pv-13   20Gi       RWO            Delete           Available                                      6m
+db-local-pv-14   20Gi       RWO            Delete           Available                                      6m
+db-local-pv-15   20Gi       RWO            Delete           Available                                      6m
+db-local-pv-3    20Gi       RWO            Delete           Available                                      6m
+db-local-pv-4    20Gi       RWO            Delete           Available                                      6m
+db-local-pv-5    20Gi       RWO            Delete           Available                                      6m
+db-local-pv-6    20Gi       RWO            Delete           Available                                      6m
+db-local-pv-7    20Gi       RWO            Delete           Available                                      6m
+db-local-pv-8    20Gi       RWO            Delete           Available                                      6m
+db-local-pv-9    20Gi       RWO            Delete           Available                                      6m
 ```
 
 You can see it is now released.
 
-```
-kubectl delete pv local-pv-1
-```
-```
-persistentvolume "local-pv-1" deleted
-```
 ...
 ```
 kubectl delete secret db-pass
