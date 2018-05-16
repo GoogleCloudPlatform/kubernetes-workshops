@@ -22,6 +22,7 @@ kubectl create secret generic db-pass --from-file=password=pass.txt
 secret "db-pass" created
 ```
 
+Have the admin provision the persistent volumes for the database.
 
 Deploy the database
 
@@ -30,7 +31,6 @@ kubectl create -f database-pvc.yaml
 ```
 
 ```
-persistentvolume "pv-1" created
 service "lobsters-sql" created
 persistentvolumeclaim "mysql-pv-claim" created
 deployment "lobsters-sql" created
@@ -274,12 +274,18 @@ Now visit the site and we are back to Lobsters version 1.0.
 ### Auto-scale
 
 Horizontal pod autoscaling requires the Heapster and Metrics server cluster add-on.
-Heapster was not set up in the local bringup section of this workshop. The below docs describe how autoscaling works, and how to configure Heapster:
+Those were already setup in the clster. The below docs describe how autoscaling works, and how to configure Heapster:
 * http://kubernetes.io/docs/user-guide/horizontal-pod-autoscaling/
 * https://github.com/kubernetes/kubernetes/blob/release-1.2/docs/design/horizontal-pod-autoscaler.md#autoscaling-algorithm
 * https://github.com/kubernetes/heapster/blob/master/docs/influxdb.md
 
-Once Heapster is configured, pod auto-scaling is as simple as:
+Autoscaling requires resource requests and limits to be set:
+
+```
+kubectl appy -f frontend-sidecar-with-resources.yaml
+```
+
+Once everything is setup, pod auto-scaling is as simple as:
 
 ```
 kubectl autoscale deployment lobsters --min=1 --max=6
@@ -297,7 +303,7 @@ kubectl get pods -w
 Use a bash shell on your local machine or Docker VM to generate load:
 
 ```
-while true ; do curl http://localhost:<node-port>/; done
+while true ; do curl http://cjdv-k8-master.ep.esp.local:<node-port>/; done
 ```
 
 Watch your other terminal with the pod list, the auto-scaler checks
