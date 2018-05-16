@@ -2,7 +2,7 @@
 apiVersion: v1
 kind: PersistentVolume
 metadata:
-  name: local-pv-1
+  name: db-local-pv-1
   labels:
     type: local
 spec:
@@ -17,7 +17,7 @@ spec:
 apiVersion: v1
 kind: PersistentVolume
 metadata:
-  name: local-pv-2
+  name: db-local-pv-2
   labels:
     type: local
 spec:
@@ -32,7 +32,7 @@ spec:
 apiVersion: v1
 kind: PersistentVolume
 metadata:
-  name: local-pv-3
+  name: db-local-pv-3
   labels:
     type: local
 spec:
@@ -47,7 +47,7 @@ spec:
 apiVersion: v1
 kind: PersistentVolume
 metadata:
-  name: local-pv-4
+  name: db-local-pv-4
   labels:
     type: local
 spec:
@@ -62,7 +62,7 @@ spec:
 apiVersion: v1
 kind: PersistentVolume
 metadata:
-  name: local-pv-5
+  name: db-local-pv-5
   labels:
     type: local
 spec:
@@ -77,7 +77,7 @@ spec:
 apiVersion: v1
 kind: PersistentVolume
 metadata:
-  name: local-pv-6
+  name: db-local-pv-6
   labels:
     type: local
 spec:
@@ -92,7 +92,7 @@ spec:
 apiVersion: v1
 kind: PersistentVolume
 metadata:
-  name: local-pv-7
+  name: db-local-pv-7
   labels:
     type: local
 spec:
@@ -107,7 +107,7 @@ spec:
 apiVersion: v1
 kind: PersistentVolume
 metadata:
-  name: local-pv-8
+  name: db-local-pv-8
   labels:
     type: local
 spec:
@@ -122,7 +122,7 @@ spec:
 apiVersion: v1
 kind: PersistentVolume
 metadata:
-  name: local-pv-9
+  name: db-local-pv-9
   labels:
     type: local
 spec:
@@ -137,7 +137,7 @@ spec:
 apiVersion: v1
 kind: PersistentVolume
 metadata:
-  name: local-pv-10
+  name: db-local-pv-10
   labels:
     type: local
 spec:
@@ -152,7 +152,7 @@ spec:
 apiVersion: v1
 kind: PersistentVolume
 metadata:
-  name: local-pv-11
+  name: db-local-pv-11
   labels:
     type: local
 spec:
@@ -167,7 +167,7 @@ spec:
 apiVersion: v1
 kind: PersistentVolume
 metadata:
-  name: local-pv-12
+  name: db-local-pv-12
   labels:
     type: local
 spec:
@@ -182,7 +182,7 @@ spec:
 apiVersion: v1
 kind: PersistentVolume
 metadata:
-  name: local-pv-13
+  name: db-local-pv-13
   labels:
     type: local
 spec:
@@ -197,7 +197,7 @@ spec:
 apiVersion: v1
 kind: PersistentVolume
 metadata:
-  name: local-pv-14
+  name: db-local-pv-14
   labels:
     type: local
 spec:
@@ -212,7 +212,7 @@ spec:
 apiVersion: v1
 kind: PersistentVolume
 metadata:
-  name: local-pv-15
+  name: db-local-pv-15
   labels:
     type: local
 spec:
